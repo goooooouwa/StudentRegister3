@@ -38,7 +38,9 @@ android {
 
 dependencies {
     val room_version = "2.6.1"
+    val lifecycle_version = "2.8.7"
 
+    // Room
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
 
@@ -46,6 +48,11 @@ dependencies {
     kapt("androidx.room:room-compiler:$room_version")
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$room_version")
+
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
