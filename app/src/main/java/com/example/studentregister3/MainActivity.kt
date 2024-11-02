@@ -5,8 +5,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
+import com.example.studentregister3.db.StudentDatabase
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var viewModel: StudentViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -16,5 +19,11 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val dao = StudentDatabase.getInstance(application).studentDao()
+        val factory = StudentViewModelFactory(dao)
+        viewModel = ViewModelProvider(this, factory)[StudentViewModel::class.java]
+
+
     }
 }
